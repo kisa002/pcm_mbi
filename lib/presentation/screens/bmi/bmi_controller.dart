@@ -4,6 +4,7 @@ class BmiController extends GetxController {
   final age = 20.obs;
   final weight = 50.obs;
   final height = 175.0.obs;
+  final isFemale = true.obs;
 
   final minHeight = 50.0;
   final maxHeight = 220.0;
@@ -23,4 +24,6 @@ class BmiController extends GetxController {
   }
 
   void setHeight(double value) => height.value = value;
+
+  void setIsFemale(bool value) => isFemale.value = value;
 }

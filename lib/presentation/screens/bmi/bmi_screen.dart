@@ -51,44 +51,85 @@ class BmiScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 24),
-                Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: EdgeInsets.all(16),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Height (CM)',
-                        style: TextStyle(
-                          color: AppColors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
+                buildCardContainer(
+                  children: [
+                    Text(
+                      'Height (CM)',
+                      style: TextStyle(
+                        color: AppColors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
                       ),
-                      Text(
-                        controller.height.value.ceil().toString(),
-                        style: TextStyle(
-                          color: AppColors.primary,
-                          fontSize: 60,
-                          fontWeight: FontWeight.w700,
-                        ),
+                    ),
+                    Text(
+                      controller.height.value.ceil().toString(),
+                      style: TextStyle(
+                        color: AppColors.primary,
+                        fontSize: 60,
+                        fontWeight: FontWeight.w700,
                       ),
-                      Slider(
-                        value: controller.height.value,
-                        min: controller.minHeight,
-                        max: controller.maxHeight,
-                        divisions: (controller.maxHeight - controller.minHeight).toInt(),
-                        onChanged: controller.setHeight,
-                      )
-                    ],
-                  ),
-                )
+                    ),
+                    Slider(
+                      value: controller.height.value,
+                      min: controller.minHeight,
+                      max: controller.maxHeight,
+                      divisions:
+                          (controller.maxHeight - controller.minHeight).toInt(),
+                      onChanged: controller.setHeight,
+                    )
+                  ],
+                ),
+                SizedBox(height: 24),
+                buildCardContainer(
+                  children: [
+                    Text(
+                      'Gender',
+                      style: TextStyle(
+                        color: AppColors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: 12,
+                      children: [
+                        Text(
+                          'Male',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Switch(
+                          value: controller.isFemale.value,
+                          onChanged: controller.setIsFemale,
+                        ),
+                        Text(
+                          'Female',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget buildCardContainer({required List<Widget> children}) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: children,
       ),
     );
   }
