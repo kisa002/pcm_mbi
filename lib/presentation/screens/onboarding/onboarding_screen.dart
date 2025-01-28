@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pcm_bmi/presentation/theme/app_colors.dart';
 
-import '../home/bmi_screen.dart';
+import '../bmi/bmi_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
