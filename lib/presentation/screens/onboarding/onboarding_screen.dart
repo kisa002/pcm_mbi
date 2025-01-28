@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pcm_bmi/presentation/theme/app_colors.dart';
+
+import '../bmi/bmi_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -47,7 +50,7 @@ class OnboardingScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 child: FilledButton(
                   onPressed: () {
-                    // TODO: Navigate to the bmi screen
+                    Get.to(() => BmiScreen());
                   },
                   style: FilledButton.styleFrom(
                     backgroundColor: AppColors.white,
