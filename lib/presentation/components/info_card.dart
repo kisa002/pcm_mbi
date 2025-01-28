@@ -42,7 +42,7 @@ class InfoCard extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 32,
+            spacing: 28,
             children: [
               CircularButton(
                 onTap: onDecrease,

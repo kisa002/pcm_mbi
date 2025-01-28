@@ -14,182 +14,184 @@ class BmiScreen extends StatelessWidget {
     return Obx(
       () => Material(
         color: AppColors.background,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            child: Column(
-              children: [
-                Text(
-                  'PCM BMI',
-                  style: TextStyle(
-                    color: AppColors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              child: Column(
+                children: [
+                  Text(
+                    'PCM BMI',
+                    style: TextStyle(
+                      color: AppColors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                SizedBox(height: 32),
-                Flex(
-                  direction: Axis.horizontal,
-                  children: [
-                    Flexible(
-                      child: InfoCard(
-                        name: 'Age',
-                        value: controller.age.string,
-                        onDecrease: controller.decreaseAge,
-                        onIncrease: controller.increaseAge,
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    Flexible(
-                      child: InfoCard(
-                        name: 'Weight (KG)',
-                        value: controller.weight.string,
-                        onDecrease: controller.decreaseWeight,
-                        onIncrease: controller.increaseWeight,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 24),
-                buildCardContainer(
-                  children: [
-                    Text(
-                      'Height (CM)',
-                      style: TextStyle(
-                        color: AppColors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Text(
-                      controller.height.value.ceil().toString(),
-                      style: TextStyle(
-                        color: AppColors.primary,
-                        fontSize: 60,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Slider(
-                      value: controller.height.value,
-                      min: controller.minHeight,
-                      max: controller.maxHeight,
-                      divisions:
-                          (controller.maxHeight - controller.minHeight).toInt(),
-                      onChanged: controller.setHeight,
-                    )
-                  ],
-                ),
-                SizedBox(height: 24),
-                buildCardContainer(
-                  children: [
-                    Text(
-                      'Gender',
-                      style: TextStyle(
-                        color: AppColors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(height: 12),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: 12,
-                      children: [
-                        Text(
-                          'Male',
-                          style: TextStyle(fontSize: 16),
+                  SizedBox(height: 32),
+                  Flex(
+                    direction: Axis.horizontal,
+                    children: [
+                      Flexible(
+                        child: InfoCard(
+                          name: 'Age',
+                          value: controller.age.string,
+                          onDecrease: controller.decreaseAge,
+                          onIncrease: controller.increaseAge,
                         ),
-                        Switch(
-                          value: controller.isFemale.value,
-                          onChanged: controller.setIsFemale,
+                      ),
+                      SizedBox(width: 20),
+                      Flexible(
+                        child: InfoCard(
+                          name: 'Weight (KG)',
+                          value: controller.weight.string,
+                          onDecrease: controller.decreaseWeight,
+                          onIncrease: controller.increaseWeight,
                         ),
-                        Text(
-                          'Female',
-                          style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 24),
+                  buildCardContainer(
+                    children: [
+                      Text(
+                        'Height (CM)',
+                        style: TextStyle(
+                          color: AppColors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(height: 40),
-                SizedBox(
-                  width: double.infinity,
-                  child: FilledButton(
-                    onPressed: () {
-                      final bmiResult = controller.calculateBmi();
-
-                      Get.dialog(
-                        Dialog(
-                          backgroundColor: AppColors.white,
-                          child: Wrap(
-                            alignment: WrapAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(28),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'BMI Results',
-                                      style: TextStyle(
-                                          color: AppColors.black,
-                                          fontSize: 28,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Text(
-                                      bmiResult.bmi.toString(),
-                                      style: TextStyle(
-                                        color: AppColors.primary,
-                                        fontSize: 60,
-                                        fontWeight: FontWeight.w800,
+                      ),
+                      Text(
+                        controller.height.value.ceil().toString(),
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: 60,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Slider(
+                        value: controller.height.value,
+                        min: controller.minHeight,
+                        max: controller.maxHeight,
+                        divisions:
+                            (controller.maxHeight - controller.minHeight).toInt(),
+                        onChanged: controller.setHeight,
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 24),
+                  buildCardContainer(
+                    children: [
+                      Text(
+                        'Gender',
+                        style: TextStyle(
+                          color: AppColors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 12,
+                        children: [
+                          Text(
+                            'Male',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Switch(
+                            value: controller.isFemale.value,
+                            onChanged: controller.setIsFemale,
+                          ),
+                          Text(
+                            'Female',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 40),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton(
+                      onPressed: () {
+                        final bmiResult = controller.calculateBmi();
+          
+                        Get.dialog(
+                          Dialog(
+                            backgroundColor: AppColors.white,
+                            child: Wrap(
+                              alignment: WrapAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(28),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        'BMI Results',
+                                        style: TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 28,
+                                            fontWeight: FontWeight.w500),
                                       ),
-                                    ),
-                                    Text(
-                                      bmiResult.result.toString(),
-                                      style: TextStyle(
-                                        color: AppColors.black,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(height: 12),
-                                    SizedBox(
-                                      width: double.infinity,
-                                      child: FilledButton(
-                                        onPressed: () => Get.back(),
-                                        style: FilledButton.styleFrom(
-                                          backgroundColor: AppColors.primary,
-                                          foregroundColor: AppColors.white,
+                                      Text(
+                                        bmiResult.bmi.toString(),
+                                        style: TextStyle(
+                                          color: AppColors.primary,
+                                          fontSize: 60,
+                                          fontWeight: FontWeight.w800,
                                         ),
-                                        child: Text(
-                                          'Close',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w700,
+                                      ),
+                                      Text(
+                                        bmiResult.result.toString(),
+                                        style: TextStyle(
+                                          color: AppColors.black,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      SizedBox(height: 12),
+                                      SizedBox(
+                                        width: double.infinity,
+                                        child: FilledButton(
+                                          onPressed: () => Get.back(),
+                                          style: FilledButton.styleFrom(
+                                            backgroundColor: AppColors.primary,
+                                            foregroundColor: AppColors.white,
+                                          ),
+                                          child: Text(
+                                            'Close',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    )
-                                  ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
+                        );
+                      },
+                      style: FilledButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        foregroundColor: AppColors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Text(
+                          'Calculate BMI',
+                          style: TextStyle(fontWeight: FontWeight.w700),
                         ),
-                      );
-                    },
-                    style: FilledButton.styleFrom(
-                      backgroundColor: AppColors.primary,
-                      foregroundColor: AppColors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Text(
-                        'Calculate BMI',
-                        style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
