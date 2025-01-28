@@ -3,6 +3,10 @@ import 'package:get/get.dart';
 class BmiController extends GetxController {
   final age = 20.obs;
   final weight = 50.obs;
+  final height = 175.0.obs;
+
+  final minHeight = 50.0;
+  final maxHeight = 220.0;
 
   void increaseAge() => age.value++;
   void decreaseAge() {
@@ -17,4 +21,6 @@ class BmiController extends GetxController {
       weight.value--;
     }
   }
+
+  void setHeight(double value) => height.value = value;
 }

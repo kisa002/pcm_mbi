@@ -50,6 +50,41 @@ class BmiScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 24),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Height (CM)',
+                        style: TextStyle(
+                          color: AppColors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        controller.height.value.ceil().toString(),
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: 60,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Slider(
+                        value: controller.height.value,
+                        min: controller.minHeight,
+                        max: controller.maxHeight,
+                        divisions: (controller.maxHeight - controller.minHeight).toInt(),
+                        onChanged: controller.setHeight,
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),
