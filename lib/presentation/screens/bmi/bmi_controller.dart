@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:pcm_bmi/data/bmi_result.dart';
 
 class BmiController extends GetxController {
   final age = 20.obs;
@@ -26,4 +27,11 @@ class BmiController extends GetxController {
   void setHeight(double value) => height.value = value;
 
   void setIsFemale(bool value) => isFemale.value = value;
+
+  BmiResult calculateBmi() {
+    final heightInMeter = height.value / 100;
+    final bmi = (weight.value / (heightInMeter * heightInMeter)).toPrecision(2);
+
+    return BmiResult(bmi);
+  }
 }

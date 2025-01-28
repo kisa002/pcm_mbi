@@ -13,7 +13,7 @@ class BmiScreen extends StatelessWidget {
 
     return Obx(
       () => Material(
-        color: AppColors.primary,
+        color: AppColors.background,
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
@@ -22,9 +22,9 @@ class BmiScreen extends StatelessWidget {
                 Text(
                   'PCM BMI',
                   style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
+                    color: AppColors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(height: 32),
@@ -39,7 +39,7 @@ class BmiScreen extends StatelessWidget {
                         onIncrease: controller.increaseAge,
                       ),
                     ),
-                    SizedBox(width: 24),
+                    SizedBox(width: 20),
                     Flexible(
                       child: InfoCard(
                         name: 'Weight (KG)',
@@ -110,6 +110,84 @@ class BmiScreen extends StatelessWidget {
                       ],
                     )
                   ],
+                ),
+                SizedBox(height: 40),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: () {
+                      final bmiResult = controller.calculateBmi();
+
+                      Get.dialog(
+                        Dialog(
+                          backgroundColor: AppColors.white,
+                          child: Wrap(
+                            alignment: WrapAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(28),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'BMI Results',
+                                      style: TextStyle(
+                                          color: AppColors.black,
+                                          fontSize: 28,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Text(
+                                      bmiResult.bmi.toString(),
+                                      style: TextStyle(
+                                        color: AppColors.primary,
+                                        fontSize: 60,
+                                        fontWeight: FontWeight.w800,
+                                      ),
+                                    ),
+                                    Text(
+                                      bmiResult.result.toString(),
+                                      style: TextStyle(
+                                        color: AppColors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    SizedBox(height: 12),
+                                    SizedBox(
+                                      width: double.infinity,
+                                      child: FilledButton(
+                                        onPressed: () => Get.back(),
+                                        style: FilledButton.styleFrom(
+                                          backgroundColor: AppColors.primary,
+                                          foregroundColor: AppColors.white,
+                                        ),
+                                        child: Text(
+                                          'Close',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    style: FilledButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      foregroundColor: AppColors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        'Calculate BMI',
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
