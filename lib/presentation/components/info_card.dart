@@ -4,15 +4,17 @@ import 'package:pcm_bmi/presentation/components/circular_button.dart';
 import '../theme/app_colors.dart';
 
 class InfoCard extends StatelessWidget {
-  const InfoCard(
-      {super.key,
-      required this.name,
-      required this.value,
-      required this.onTap});
+  const InfoCard({
+    super.key,
+    required this.name,
+    required this.value,
+    required this.onDecrease,
+    required this.onIncrease,
+  });
 
   final String name;
   final String value;
-  final Function() onTap;
+  final Function() onIncrease, onDecrease;
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +45,14 @@ class InfoCard extends StatelessWidget {
             spacing: 32,
             children: [
               CircularButton(
-                onTap: onTap,
+                onTap: onDecrease,
                 child: Icon(
                   Icons.remove,
                   color: AppColors.white,
                 ),
               ),
               CircularButton(
-                onTap: onTap,
+                onTap: onIncrease,
                 child: Icon(
                   Icons.add,
                   color: AppColors.white,
