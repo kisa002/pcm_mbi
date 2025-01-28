@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pcm_bmi/presentation/screens/onboarding/onboarding_screen.dart';
 import 'package:pcm_bmi/presentation/theme/app_colors.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'PCM BMI',
       theme: ThemeData(
         fontFamily: 'Pretendard',
